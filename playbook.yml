@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Collection instance info
+      os_server_info:
+        cloud: b262-project
+      register: info_output
+
+    - name: Store value in variable
+      set_fact:
+        instances: "{{
+           instances |default([]) + [{
+          'Name': item.name,
+          'Private_ip': item.private_v4,
+          'Public_IP': item.public_v4,
+          'State': item.vm_state,
+          'CPU': item.flavor.vcpus,
+          'Memory': item.flavor.ram,
+          'Metadata': item.metadata
+          }] }}"
+      loop: "{{ info_output.openstack_servers }}"
+
+    - name: Save output in file
+      copy:
+        content: |
+          ---
+          instances:
+          {{ instances |to_nice_yaml }}
+        dest: instances.yml

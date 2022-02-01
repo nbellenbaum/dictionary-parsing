@@ -1,0 +1,30 @@
+---
+instances:
+-   CPU: 2
+    Memory: 10240
+    Metadata:
+        AnsibleGroup: bastions,controls
+        Project: ansible-advanced-v2-b262
+        env_type: ansible-advanced-v2
+        guid: b262
+        instance_filter: ansible-advanced-v2-nick.bellenbaum@siriuscom.com
+        ostype: linux
+        owner: nick.bellenbaum@siriuscom.com
+    Name: control
+    Private_ip: 192.168.50.33
+    Public_IP: 150.239.26.5
+    State: active
+-   CPU: 16
+    Memory: 30720
+    Metadata:
+        AnsibleGroup: satellites
+        Project: ansible-advanced-v2-b262
+        env_type: ansible-advanced-v2
+        guid: b262
+        instance_filter: ansible-advanced-v2-nick.bellenbaum@siriuscom.com
+        ostype: linux
+        owner: nick.bellenbaum@siriuscom.com
+    Name: satellite
+    Private_ip: 192.168.50.117
+    Public_IP: 150.239.26.241
+    State: active
